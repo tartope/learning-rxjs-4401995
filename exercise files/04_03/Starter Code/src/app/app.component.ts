@@ -20,7 +20,7 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.citySubject$.pipe(switchMap((city)=>{
       return this.getWeather(city).pipe(delay(1000));
-    })).subscribe(weather =>{
+    })).subscribe((weather) =>{
       this.displayWeather.push(weather);
     })
   }
@@ -47,7 +47,6 @@ export class AppComponent implements OnInit {
         humidity: 41,
       },
     };
-    console.log(weatherDataMap[city])
     return of(weatherDataMap[city]);
   }
 }
